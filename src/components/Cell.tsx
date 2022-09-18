@@ -1,3 +1,11 @@
-function Cell() {}
+function CellContainer({ x, y, grid, openCell, flagCell }: any) {
+  const key = `${x}:${y}`
 
-export default Cell
+  return (
+    <div className="minesweeper-cell" key={key}>
+      {x} {y}
+    </div>
+  )
+}
+
+export default CellContainer

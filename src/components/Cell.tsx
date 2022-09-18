@@ -23,9 +23,10 @@ function CellContainer({
   )
 
   function getCellClass({
+    close_bombs,
     is_opened,
     is_bomb,
-  }: Pick<Cell, 'is_opened' | 'is_bomb'>) {
+  }: Pick<Cell, 'close_bombs' | 'is_opened' | 'is_bomb'>) {
     const classNames = ['cell']
 
     if (is_opened) {
@@ -34,6 +35,10 @@ function CellContainer({
 
     if (is_opened && is_bomb) {
       classNames.push('bomb')
+    }
+
+    if (is_opened && close_bombs) {
+      classNames.push(`close-bombs-${close_bombs}`)
     }
 
     return classNames.join(' ')

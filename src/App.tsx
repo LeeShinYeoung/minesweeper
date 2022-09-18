@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import GridContainer from './components/Grid'
+import Header from './components/Header'
 import { getAllBombCells, isClear } from './helpers/Utils'
 import { flagCell, openCell } from './helpers/Eventor'
 import { generate } from './helpers/Generator'
@@ -32,7 +33,8 @@ function App() {
   }, [start])
 
   return (
-    <div className="App">
+    <div className="minesweeper-wrapper">
+      <Header />
       <GridContainer
         grid={grid}
         listenOpenCell={listenOpenCell}

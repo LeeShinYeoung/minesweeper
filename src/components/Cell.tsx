@@ -22,11 +22,18 @@ function CellContainer({
     </div>
   )
 
-  function getCellClass({ is_opened }: Pick<Cell, 'is_opened'>) {
+  function getCellClass({
+    is_opened,
+    is_bomb,
+  }: Pick<Cell, 'is_opened' | 'is_bomb'>) {
     const classNames = ['cell']
 
     if (is_opened) {
       classNames.push('opened')
+    }
+
+    if (is_opened && is_bomb) {
+      classNames.push('bomb')
     }
 
     return classNames.join(' ')

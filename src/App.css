@@ -1,3 +1,4 @@
+/* Wrapper */
 .minesweeper-wrapper {
   display: flex;
   flex-direction: column;
@@ -5,6 +6,41 @@
   justify-content: center;
 }
 
+/* Header */
+.minesweeper-header {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.minesweeper-header > div {
+  margin: 0 10px;
+}
+
+.minesweeper-header .reset {
+  padding: 15px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 30px;
+}
+
+/* Footer */
+.minesweeper-footer {
+  margin-top: 15px;
+}
+
+.minesweeper-footer button {
+  margin: 0 5px;
+  border: none;
+  color: #fff;
+  background-color: rgb(93, 93, 93);
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+/* Grid */
 .minesweeper-grid {
   display: grid;
   grid-template-columns: repeat(10, 30px);
@@ -12,6 +48,7 @@
   text-align: center;
 }
 
+/* Cell */
 .minesweeper-cell {
   width: 30px;
   height: 30px;
@@ -39,33 +76,33 @@
 }
 
 .minesweeper-cell.close-bombs-1 {
-  color: blue;
+  color: #1e90ff;
 }
 
 .minesweeper-cell.close-bombs-2 {
-  color: green;
+  color: #32cd32;
 }
 
 .minesweeper-cell.close-bombs-3 {
-  color: red;
+  color: #ff4500;
 }
 
 .minesweeper-cell.close-bombs-4 {
-  color: darkblue;
+  color: #8a2be2;
 }
 
 .minesweeper-cell.close-bombs-5 {
-  color: brown;
+  color: #ff0000;
 }
 
 .minesweeper-cell.close-bombs-6 {
-  color: cyan;
+  color: #00ffff;
 }
 
 .minesweeper-cell.close-bombs-7 {
-  color: black;
+  color: #000000;
 }
 
 .minesweeper-cell.close-bombs-8 {
-  color: grey;
+  color: #696969;
 }

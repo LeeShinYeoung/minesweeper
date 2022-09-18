@@ -9,46 +9,47 @@ import {
   generateGrid,
   generateNumbers,
 } from './helpers/Generator'
-import { Cell, Grid } from './interfaces'
+import { Cell, GameState, Grid } from './interfaces'
 import { CoordinateArray } from './types'
-
-enum GameState {
-  READY,
-  PLAYING,
-  WON,
-  LOST,
-}
+import Footer from './components/Footer'
 
 function App() {
-  const [width, setWidth] = useState(25)
-  const [height, setHeight] = useState(25)
+  const [width, setWidth] = useState(10)
+  const [height, setHeight] = useState(10)
   const [bombs, setbombs] = useState(10)
+  const [gamestate, setGameState] = useState(GameState.READY)
   const [start, setStart] = useState(false)
-
-  const [gamestate, setGameState] = useState(GameState.PLAYING)
-
   const [grid, setGrid] = useState({})
+
+  const [leftoverBombs, setLeftoverBombs] = useState(bombs)
+  const [timer, setTimer] = useState(0)
 
   useEffect(() => setStart(true), [])
 
   useEffect(() => {
     setGrid(generateGrid(width, height))
     setGameState(GameState.READY)
+    setLeftoverBombs(bombs)
     setStart(false)
   }, [start])
 
   return (
     <div className="minesweeper-wrapper">
-      <Header />
+      <Header
+        setStart={setStart}
+        gameState={gamestate}
+        leftoverBombs={leftoverBombs}
+      />
       <GridContainer
         grid={grid}
-        listenOpenCell={listenOpenCell}
-        listenFlagCell={listenFlagCell}
+        listenCellLeftClick={listenCellLeftClick}
+        listenCellRightClick={listenCellRightClick}
       />
+      <Footer />
     </div>
   )
 
-  function listenOpenCell(x: number, y: number) {
+  function listenCellLeftClick(x: number, y: number) {
     if (gamestate === GameState.READY) {
       setGrid(generateNumbers(generateBombs(grid, bombs, [{ x, y }])))
       setGameState(GameState.PLAYING)
@@ -71,11 +72,13 @@ function App() {
     }
   }
 
-  function listenFlagCell(x: number, y: number) {
+  function listenCellRightClick(x: number, y: number) {
     if (gamestate !== GameState.PLAYING) return
 
     const { setted, flag } = flagCell(grid, x, y)
     updateCells(setted, { is_flagged: flag })
+
+    setLeftoverBombs(flag ? leftoverBombs - 1 : leftoverBombs + 1)
   }
 
   function setGameWon() {

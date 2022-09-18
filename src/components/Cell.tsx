@@ -6,8 +6,8 @@ function CellContainer({
   x,
   y,
   grid,
-  listenOpenCell,
-  listenFlagCell,
+  listenCellLeftClick,
+  listenCellRightClick,
 }: CellContainerProps) {
   const key: CoordinateString = `${x}:${y}`
 
@@ -64,9 +64,9 @@ function CellContainer({
   function clickCell(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault()
     if (event.type === 'click') {
-      listenOpenCell(x, y)
+      listenCellLeftClick(x, y)
     } else if (event.type === 'contextmenu') {
-      listenFlagCell(x, y)
+      listenCellRightClick(x, y)
     }
   }
 }

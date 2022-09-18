@@ -6,8 +6,8 @@ import { CoordinateObject } from '../types'
 
 function GridContainer({
   grid,
-  listenOpenCell,
-  listenFlagCell,
+  listenCellLeftClick,
+  listenCellRightClick,
 }: GridContainerProps) {
   const { width, height } = getGridWidthAndHeight(grid)
 
@@ -26,7 +26,13 @@ function GridContainer({
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         cells.push(
-          CellContainer({ x, y, grid, listenOpenCell, listenFlagCell })
+          CellContainer({
+            x,
+            y,
+            grid,
+            listenCellLeftClick,
+            listenCellRightClick,
+          })
         )
       }
     }

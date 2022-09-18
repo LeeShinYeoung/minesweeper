@@ -1,5 +1,12 @@
 import { CoordinateString } from '../types'
 
+export enum GameState {
+  READY,
+  PLAYING,
+  WON,
+  LOST,
+}
+
 export interface Grid {
   [coordinate: CoordinateString]: Cell
 }
@@ -15,14 +22,14 @@ export interface Cell {
 
 export interface GridContainerProps {
   grid: Grid
-  listenOpenCell: Function
-  listenFlagCell: Function
+  listenCellLeftClick: Function
+  listenCellRightClick: Function
 }
 
 export interface CellContainerProps {
   x: number
   y: number
   grid: Grid
-  listenOpenCell: Function
-  listenFlagCell: Function
+  listenCellLeftClick: Function
+  listenCellRightClick: Function
 }

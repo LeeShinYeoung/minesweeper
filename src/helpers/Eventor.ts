@@ -1,12 +1,13 @@
 import { Grid } from '../interfaces'
 import { CoordinateArray } from '../types'
+import { getGridWidthAndHeight } from '../utils'
 
 export function openCell(grid: Grid, x: number, y: number) {
-  const opened: CoordinateArray = []
+  const opened: CoordinateArray[] = []
 
   let is_gameover = false
 
-  const open_target: CoordinateArray = [[x, y]]
+  const open_target: CoordinateArray[] = [[x, y]]
   while (open_target.length) {
     const [x, y] = open_target.pop()!
 
@@ -43,6 +44,15 @@ export function openCell(grid: Grid, x: number, y: number) {
 
 export function flagCell(grid: Grid, x: number, y: number) {
   const cell = grid[`${x}:${y}`]
-  cell.is_flagged = !cell.is_flagged
-  return { grid, flag: cell.is_flagged }
+
+  const setted: CoordinateArray[] = []
+
+  if (cell && !cell.is_opened) {
+    const flag = !cell.is_flagged
+    cell.is_flagged = flag
+    setted.push([x, y])
+    return { grid, setted, flag }
+  }
+
+  return { grid, setted }
 }

@@ -11,6 +11,16 @@
   line-height: 30px;
   font-size: 15px;
   transition: 0.3s;
-  background-color: #6b728000;
-  border: 1px solid #6b72801a;
+  background-color: rgba(107, 114, 128, 0.1);
+  border: 1px solid rgba(107, 114, 128, 0.2);
+}
+
+.minesweeper-cell:not(.opened):hover {
+  background-color: rgba(107, 114, 128, 0.05);
+  border: 1px solid rgba(107, 114, 128, 0.05);
+}
+
+.minesweeper-cell.opened {
+  background-color: rgba(107, 114, 128, 0);
+  border: 1px solid rgba(107, 114, 128, 0.1);
 }

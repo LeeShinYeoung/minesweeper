@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getGridWidthAndHeight } from '../utils'
+import { getGridWidthAndHeight } from '../helpers/Utils'
 import CellContainer from './Cell'
 import { Grid, GridContainerProps } from '../interfaces'
 import { CoordinateObject } from '../types'

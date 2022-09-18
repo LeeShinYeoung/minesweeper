@@ -1,6 +1,6 @@
 import { Grid } from '../interfaces'
 import { CoordinateArray } from '../types'
-import { getGridWidthAndHeight } from '../utils'
+import { getGridWidthAndHeight } from './Utils'
 
 export function openCell(grid: Grid, x: number, y: number) {
   const opened: CoordinateArray[] = []

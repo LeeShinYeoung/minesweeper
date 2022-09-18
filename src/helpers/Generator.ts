@@ -1,6 +1,6 @@
 import { Grid } from '../interfaces'
 import { CoordinateObject } from '../types'
-import { getGridWidthAndHeight, getRandomCoordinate } from '../utils'
+import { getGridWidthAndHeight, getRandomCoordinate } from './Utils'
 
 export function generate(width: number, height: number, bombs: number) {
   let grid = generateGrid(width, height)

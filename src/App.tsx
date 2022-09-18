@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import GridContainer from './components/Grid'
-import { getAllBombCells, isGameClear } from './helpers/Checker'
+import { getAllBombCells, isClear } from './helpers/Utils'
 import { flagCell, openCell } from './helpers/Eventor'
 import { generate } from './helpers/Generator'
 import { Cell, Grid } from './interfaces'
@@ -53,7 +53,7 @@ function App() {
 
     updateCells(opened, { is_opened: true })
 
-    if (isGameClear(grid)) {
+    if (isClear(grid)) {
       setGameWon()
       return
     }

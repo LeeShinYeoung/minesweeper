@@ -1,5 +1,5 @@
 import { Grid } from '../interfaces'
-import { CoordinateObject, CoordinateString } from '../types'
+import { CoordinateArray, CoordinateObject } from '../types'
 
 export function getGridWidthAndHeight(grid: Grid): {
   width: number
@@ -13,6 +13,29 @@ export function getGridWidthAndHeight(grid: Grid): {
     },
     { width: 0, height: 0 }
   )
+}
+
+export function getAllBombCells(grid: Grid) {
+  const { width, height } = getGridWidthAndHeight(grid)
+  const cells: CoordinateArray[] = []
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const cell = grid[`${x}:${y}`]
+      if (cell.is_bomb) cells.push([x, y])
+    }
+  }
+  return cells
+}
+
+export function isClear(grid: Grid) {
+  const { width, height } = getGridWidthAndHeight(grid)
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const cell = grid[`${x}:${y}`]
+      if (!cell.is_bomb && !cell.is_opened) return false
+    }
+  }
+  return true
 }
 
 export function getRandomCoordinate(
@@ -35,21 +58,4 @@ export function getRandomCoordinate(
   }
 
   return { x: random_x, y: random_y }
-}
-
-export function printGrid(grid: Grid, text?: string) {
-  const { width, height } = getGridWidthAndHeight(grid)
-
-  let canvas = ''
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-      const k: CoordinateString = `${x}:${y}`
-      if (grid[k].is_opened) canvas += 'X '
-      else if (grid[k].is_bomb) canvas += '$ '
-      else if (grid[k].close_bombs) canvas += grid[k].close_bombs + ' '
-      else canvas += '# '
-    }
-    canvas += '\n'
-  }
-  console.log(canvas, text || '')
 }

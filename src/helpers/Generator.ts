@@ -9,7 +9,7 @@ export function generate(width: number, height: number, bombs: number) {
   return grid
 }
 
-function generateGrid(width: number, height: number) {
+export function generateGrid(width: number, height: number) {
   const grid: Grid = {}
 
   for (let x = 0; x < width; x++) {
@@ -28,15 +28,17 @@ function generateGrid(width: number, height: number) {
   return grid
 }
 
-function generateBombs(baseGrid: Grid, bombs: number) {
+export function generateBombs(
+  baseGrid: Grid,
+  bombs: number,
+  excludes: CoordinateObject[] = []
+) {
   const grid = { ...baseGrid }
   const { width, height } = getGridWidthAndHeight(grid)
 
   if (width * height < bombs) {
     bombs = width * height
   }
-
-  const excludes: CoordinateObject[] = []
 
   for (let i = 0; i < bombs; i++) {
     const { x, y } = getRandomCoordinate(width, height, excludes)
@@ -47,7 +49,7 @@ function generateBombs(baseGrid: Grid, bombs: number) {
   return grid
 }
 
-function generateNumbers(baseGrid: Grid) {
+export function generateNumbers(baseGrid: Grid) {
   const grid = { ...baseGrid }
   const { width, height } = getGridWidthAndHeight(grid)
 

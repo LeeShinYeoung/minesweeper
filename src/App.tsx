@@ -4,20 +4,25 @@ import GridContainer from './components/Grid'
 import Header from './components/Header'
 import { getAllBombCells, isClear } from './helpers/Utils'
 import { flagCell, openCell } from './helpers/Eventor'
-import { generate } from './helpers/Generator'
+import {
+  generateBombs,
+  generateGrid,
+  generateNumbers,
+} from './helpers/Generator'
 import { Cell, Grid } from './interfaces'
 import { CoordinateArray } from './types'
 
 enum GameState {
+  READY,
   PLAYING,
   WON,
   LOST,
 }
 
 function App() {
-  const [width, setWidth] = useState(10)
-  const [height, setHeight] = useState(10)
-  const [bombs, setbombs] = useState(5)
+  const [width, setWidth] = useState(25)
+  const [height, setHeight] = useState(25)
+  const [bombs, setbombs] = useState(10)
   const [start, setStart] = useState(false)
 
   const [gamestate, setGameState] = useState(GameState.PLAYING)
@@ -27,8 +32,8 @@ function App() {
   useEffect(() => setStart(true), [])
 
   useEffect(() => {
-    setGrid(generate(width, height, bombs))
-    setGameState(GameState.PLAYING)
+    setGrid(generateGrid(width, height))
+    setGameState(GameState.READY)
     setStart(false)
   }, [start])
 
@@ -44,7 +49,12 @@ function App() {
   )
 
   function listenOpenCell(x: number, y: number) {
-    if (gamestate !== GameState.PLAYING) return
+    if (gamestate === GameState.READY) {
+      setGrid(generateNumbers(generateBombs(grid, bombs, [{ x, y }])))
+      setGameState(GameState.PLAYING)
+    }
+
+    if (!~[GameState.READY, GameState.PLAYING].indexOf(gamestate)) return
 
     const { opened, is_gameover } = openCell(grid, x, y)
 

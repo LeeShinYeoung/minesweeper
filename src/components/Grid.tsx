@@ -1,18 +1,14 @@
 import { useEffect, useState } from 'react'
 import { getGridWidthAndHeight } from '../utils'
 import CellContainer from './Cell'
-import { Grid } from '../interfaces'
+import { Grid, GridContainerProps } from '../interfaces'
 import { CoordinateObject } from '../types'
 
 function GridContainer({
   grid,
-  openCell,
-  flagCell,
-}: {
-  grid: Grid
-  openCell: Function
-  flagCell: Function
-}) {
+  listenOpenCell,
+  listenFlagCell,
+}: GridContainerProps) {
   const { width, height } = getGridWidthAndHeight(grid)
 
   const [size, setSize] = useState(getGridStyle(width))
@@ -29,7 +25,9 @@ function GridContainer({
 
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
-        cells.push(CellContainer({ x, y, grid, openCell, flagCell }))
+        cells.push(
+          CellContainer({ x, y, grid, listenOpenCell, listenFlagCell })
+        )
       }
     }
 

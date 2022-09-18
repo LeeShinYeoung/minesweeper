@@ -1,11 +1,14 @@
 import { Grid } from '../interfaces'
 import { CoordinateObject, CoordinateString } from '../types'
 
-export function getGridWidthAndHeight(grid: Grid) {
+export function getGridWidthAndHeight(grid: Grid): {
+  width: number
+  height: number
+} {
   return Object.values(grid).reduce(
     (acc, { x, y }) => {
-      if (x > acc.width) acc.width = x
-      if (y > acc.height) acc.height = y
+      if (x > acc.width) acc.width = x + 1
+      if (y > acc.height) acc.height = y + 1
       return acc
     },
     { width: 0, height: 0 }
@@ -16,7 +19,7 @@ export function getRandomCoordinate(
   max_x: number,
   max_y: number,
   excludes: CoordinateObject[] = []
-) {
+): CoordinateObject {
   let random_x = Math.round(Math.random() * (max_x - 1))
   let random_y = Math.round(Math.random() * (max_y - 1))
 

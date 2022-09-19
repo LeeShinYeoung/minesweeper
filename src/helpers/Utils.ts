@@ -1,7 +1,7 @@
 import { Grid } from '../interfaces'
 import { CoordinateArray, CoordinateObject } from '../types'
 
-export function getGridWidthAndHeight(grid: Grid): {
+export function getGridDimension(grid: Grid): {
   width: number
   height: number
 } {
@@ -16,7 +16,7 @@ export function getGridWidthAndHeight(grid: Grid): {
 }
 
 export function getAllBombCells(grid: Grid) {
-  const { width, height } = getGridWidthAndHeight(grid)
+  const { width, height } = getGridDimension(grid)
   const cells: CoordinateArray[] = []
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
@@ -28,7 +28,7 @@ export function getAllBombCells(grid: Grid) {
 }
 
 export function isClear(grid: Grid) {
-  const { width, height } = getGridWidthAndHeight(grid)
+  const { width, height } = getGridDimension(grid)
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
       const cell = grid[`${x}:${y}`]

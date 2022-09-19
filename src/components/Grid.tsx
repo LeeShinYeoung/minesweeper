@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getGridWidthAndHeight } from '../helpers/Utils'
+import { getGridDimension } from '../helpers/Utils'
 import CellContainer from './Cell'
 import { Grid, GridContainerProps } from '../interfaces'
 import { CoordinateObject } from '../types'
@@ -9,7 +9,7 @@ function GridContainer({
   listenCellLeftClick,
   listenCellRightClick,
 }: GridContainerProps) {
-  const { width, height } = getGridWidthAndHeight(grid)
+  const { width, height } = getGridDimension(grid)
 
   const [size, setSize] = useState(getGridStyle(width))
   useEffect(() => setSize(getGridStyle(width)), [grid])

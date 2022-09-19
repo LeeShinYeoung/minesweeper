@@ -1,6 +1,6 @@
 import { Grid } from '../interfaces'
 import { CoordinateObject } from '../types'
-import { getGridWidthAndHeight, getRandomCoordinate } from './Utils'
+import { getGridDimension, getRandomCoordinate } from './Utils'
 
 export function generate(width: number, height: number, bombs: number) {
   let grid = generateGrid(width, height)
@@ -34,7 +34,7 @@ export function generateBombs(
   excludes: CoordinateObject[] = []
 ) {
   const grid = { ...baseGrid }
-  const { width, height } = getGridWidthAndHeight(grid)
+  const { width, height } = getGridDimension(grid)
 
   if (width * height < bombs) {
     bombs = width * height
@@ -51,7 +51,7 @@ export function generateBombs(
 
 export function generateNumbers(baseGrid: Grid) {
   const grid = { ...baseGrid }
-  const { width, height } = getGridWidthAndHeight(grid)
+  const { width, height } = getGridDimension(grid)
 
   const countNeighbors = (x: number, y: number) => {
     grid[`${x}:${y}`] && grid[`${x}:${y}`].close_bombs++

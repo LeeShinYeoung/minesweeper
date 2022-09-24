@@ -30,12 +30,62 @@
   margin-top: 15px;
 }
 
-.minesweeper-footer button {
+.minesweeper-footer > div:first-child button {
   margin: 0 5px;
   border: none;
   color: #fff;
   background-color: rgb(93, 93, 93);
   padding: 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.minesweeper-footer .custom-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.minesweeper-footer .custom-modal .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.minesweeper-footer .custom-modal .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.minesweeper-footer .custom-modal .content .input-form > label {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.minesweeper-footer .custom-modal .content .input-form > label > span {
+  margin-right: 5px;
+}
+
+.minesweeper-footer .custom-modal .content > div:last-child button {
+  margin-top: 10px;
+  border: none;
+  color: #fff;
+  background-color: rgb(176, 176, 176);
+  padding: 6px 10px;
   cursor: pointer;
   border-radius: 3px;
 }

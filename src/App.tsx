@@ -84,6 +84,9 @@ function App() {
   }
 
   function setGameWon() {
+    const cells = getAllBombCells(grid)
+
+    updateCells(cells, { is_flagged: true })
     setGameState(GameState.WON)
   }
 

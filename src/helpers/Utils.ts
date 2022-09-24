@@ -7,8 +7,8 @@ export function getGridDimension(grid: Grid): {
 } {
   return Object.values(grid).reduce(
     (acc, { x, y }) => {
-      if (x > acc.width) acc.width = x + 1
-      if (y > acc.height) acc.height = y + 1
+      if (x >= acc.width) acc.width = x + 1
+      if (y >= acc.height) acc.height = y + 1
       return acc
     },
     { width: 0, height: 0 }

@@ -20,6 +20,7 @@ export function generateGrid(width: number, height: number) {
         is_flagged: false,
         is_bomb: false,
         close_bombs: 0,
+        close_flags: 0,
         is_opened: false,
       }
     }

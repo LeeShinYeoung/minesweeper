@@ -38,6 +38,22 @@ export function isClear(grid: Grid) {
   return true
 }
 
+export function getNeighborsCoordinate(
+  x: number,
+  y: number
+): CoordinateArray[] {
+  return [
+    [x - 1, y - 1],
+    [x - 1, y],
+    [x - 1, y + 1],
+    [x, y - 1],
+    [x, y + 1],
+    [x + 1, y - 1],
+    [x + 1, y],
+    [x + 1, y + 1],
+  ]
+}
+
 export function getRandomCoordinate(
   max_x: number,
   max_y: number,

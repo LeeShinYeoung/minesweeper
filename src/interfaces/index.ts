@@ -24,6 +24,7 @@ export interface Cell {
   is_bomb: boolean
   is_opened: boolean
   close_bombs: number
+  close_flags: number
 }
 
 export interface GridContainerProps {

@@ -71,17 +71,23 @@
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
+  text-align: center;
 }
 
 .minesweeper-footer .custom-modal .content .input-form > label {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
 }
 
 .minesweeper-footer .custom-modal .content .input-form > label > span {
   margin-right: 5px;
+}
+
+.minesweeper-footer .custom-modal .content .input-form > label > input {
+  width: 50px;
 }
 
 .minesweeper-footer .custom-modal .content > div:last-child button {

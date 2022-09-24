@@ -1,6 +1,17 @@
+import { Dispatch, SetStateAction } from 'react'
 import { GameState } from '../interfaces'
 
-function Header({ gameState, setStart, leftoverBombs, timer }: any) {
+function Header({
+  gameState,
+  setStart,
+  leftoverBombs,
+  timer,
+}: {
+  gameState: GameState
+  setStart: Dispatch<SetStateAction<boolean>>
+  leftoverBombs: number
+  timer: number
+}) {
   return (
     <div className="minesweeper-header">
       <div>

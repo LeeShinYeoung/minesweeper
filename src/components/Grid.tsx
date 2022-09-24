@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getGridDimension } from '../helpers/Utils'
 import CellContainer from './Cell'
-import { Grid, GridContainerProps } from '../interfaces'
-import { CoordinateObject } from '../types'
+import { GridContainerProps } from '../interfaces'
 
 function GridContainer({
   grid,
@@ -12,7 +11,7 @@ function GridContainer({
   const { width, height } = getGridDimension(grid)
 
   const [size, setSize] = useState(getGridStyle(width))
-  useEffect(() => setSize(getGridStyle(width)), [grid])
+  useEffect(() => setSize(getGridStyle(width)), [grid, width])
 
   return (
     <div className="minesweeper-grid" style={size}>

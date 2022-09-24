@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => setStart(true), [])
 
-  useEffect(startEffect, [start])
+  useEffect(startEffect, [start, width, height, bombs])
 
   useEffect(gameStatueEffect, [gamestate])
 

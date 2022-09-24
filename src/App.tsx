@@ -43,7 +43,15 @@ function App() {
         listenCellLeftClick={listenCellLeftClick}
         listenCellRightClick={listenCellRightClick}
       />
-      <Footer />
+      <Footer
+        setStart={setStart}
+        width={width}
+        setWidth={setWidth}
+        height={height}
+        setHeight={setHeight}
+        bombs={bombs}
+        setBombs={setbombs}
+      />
     </div>
   )
 

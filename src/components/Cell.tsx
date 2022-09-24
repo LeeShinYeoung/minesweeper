@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cell, CellContainerProps, Grid } from '../interfaces'
+import { Cell, CellContainerProps, CellContent } from '../interfaces'
 import { CoordinateString } from '../types'
 
 function CellContainer({
@@ -51,11 +51,11 @@ function CellContainer({
     close_bombs,
   }: Pick<Cell, 'is_flagged' | 'is_opened' | 'is_bomb' | 'close_bombs'>) {
     if (is_flagged) {
-      return '🚩'
+      return CellContent.FLAG
     } else if (!is_opened) {
-      return ''
+      return CellContent.CLOSED
     } else if (is_bomb) {
-      return '💣'
+      return CellContent.BOMB
     } else if (close_bombs) {
       return close_bombs + ''
     }

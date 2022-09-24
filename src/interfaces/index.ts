@@ -7,6 +7,12 @@ export enum GameState {
   LOST,
 }
 
+export enum CellContent {
+  CLOSED = '',
+  BOMB = '💣',
+  FLAG = '🚩',
+}
+
 export interface Grid {
   [coordinate: CoordinateString]: Cell
 }

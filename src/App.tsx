@@ -14,8 +14,8 @@ import { CoordinateArray } from './types'
 import Footer from './components/Footer'
 
 function App() {
-  const [width, setWidth] = useState(10)
-  const [height, setHeight] = useState(10)
+  const [width, setWidth] = useState(9)
+  const [height, setHeight] = useState(9)
   const [bombs, setbombs] = useState(10)
   const [gamestate, setGameState] = useState(GameState.READY)
   const [start, setStart] = useState(false)
@@ -76,9 +76,11 @@ function App() {
     if (gamestate !== GameState.PLAYING) return
 
     const { setted, flag } = flagCell(grid, x, y)
-    updateCells(setted, { is_flagged: flag })
 
-    setLeftoverBombs(flag ? leftoverBombs - 1 : leftoverBombs + 1)
+    if (setted.length) {
+      updateCells(setted, { is_flagged: flag })
+      setLeftoverBombs(flag ? leftoverBombs - 1 : leftoverBombs + 1)
+    }
   }
 
   function setGameWon() {

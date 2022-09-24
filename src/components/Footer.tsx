@@ -40,8 +40,8 @@ function Footer({
           <div>
             <button
               onClick={() => {
-                setGame(customWidth, customHeight, customBombs)
-                toggleCustomModal()
+                const result = setGame(customWidth, customHeight, customBombs)
+                if (result) toggleCustomModal()
               }}
             >
               Apply
@@ -60,10 +60,26 @@ function Footer({
   }
 
   function setGame(width: number, height: number, bombs: number) {
+    if (width * height <= bombs) {
+      alert('Too many bombs')
+      return false
+    }
+
+    if (width < 2 || height < 2) {
+      alert('The minimum width and height is 2')
+      return false
+    }
+
+    if (width * height > 3600) {
+      alert('The maximum number of cells is 3600.')
+      return false
+    }
+
     setWidth(width)
     setHeight(height)
     setBombs(bombs)
     setStart(true)
+    return true
   }
 }
 

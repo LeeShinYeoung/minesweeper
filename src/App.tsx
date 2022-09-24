@@ -26,17 +26,15 @@ function App() {
 
   useEffect(() => setStart(true), [])
 
-  useEffect(() => {
-    setGrid(generateGrid(width, height))
-    setGameState(GameState.READY)
-    setLeftoverBombs(bombs)
-    setStart(false)
-  }, [start])
+  useEffect(startEffect, [start])
+
+  useEffect(gameStatueEffect, [gamestate])
 
   return (
     <div className="minesweeper-wrapper">
       <Header
         setStart={setStart}
+        timer={timer}
         gameState={gamestate}
         leftoverBombs={leftoverBombs}
       />
@@ -48,6 +46,23 @@ function App() {
       <Footer />
     </div>
   )
+
+  function startEffect() {
+    setTimer(0)
+    setGrid(generateGrid(width, height))
+    setGameState(GameState.READY)
+    setLeftoverBombs(bombs)
+    setStart(false)
+  }
+
+  function gameStatueEffect() {
+    if (gamestate === GameState.PLAYING) {
+      const interval = setInterval(() => {
+        setTimer((timer) => timer + 1)
+      }, 1000)
+      return () => clearInterval(interval)
+    }
+  }
 
   function listenCellLeftClick(x: number, y: number) {
     if (gamestate === GameState.READY) {

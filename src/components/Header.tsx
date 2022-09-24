@@ -1,10 +1,10 @@
 import { GameState } from '../interfaces'
 
-function Header({ gameState, setStart, leftoverBombs }: any) {
+function Header({ gameState, setStart, leftoverBombs, timer }: any) {
   return (
     <div className="minesweeper-header">
       <div>
-        <div className="timer">🕒</div>
+        <div className="timer">🕒 {timer}</div>
         <div className="left-bombs">💣 {leftoverBombs}</div>
       </div>
       <div>

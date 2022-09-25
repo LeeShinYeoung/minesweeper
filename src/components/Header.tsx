@@ -16,7 +16,6 @@ function Header({
     <div className="minesweeper-header">
       <div>
         <div className="timer">🕒 {timer}</div>
-        <div className="left-bombs">💣 {leftoverBombs}</div>
       </div>
       <div>
         <button
@@ -28,19 +27,22 @@ function Header({
           {getFace(gameState)}
         </button>
       </div>
+      <div>
+        <div className="left-bombs">💣 {leftoverBombs}</div>
+      </div>
     </div>
   )
 
   function getFace(gameState: GameState) {
     switch (gameState) {
       case GameState.READY:
-        return '😺'
+        return '🙂'
       case GameState.PLAYING:
-        return '😼'
+        return '🤔'
       case GameState.WON:
-        return '😸'
+        return '😎'
       case GameState.LOST:
-        return '😿'
+        return '🗿'
     }
   }
 }

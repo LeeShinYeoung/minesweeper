@@ -1,3 +1,7 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
 /* Wrapper */
 .minesweeper-wrapper {
   display: flex;
@@ -10,6 +14,7 @@
 .minesweeper-header {
   display: flex;
   margin-bottom: 15px;
+  margin-top: 15px;
   align-items: center;
 }
 
@@ -27,7 +32,7 @@
 
 /* Footer */
 .minesweeper-footer {
-  margin-top: 15px;
+  margin-top: 45px;
 }
 
 .minesweeper-footer > div:first-child button {

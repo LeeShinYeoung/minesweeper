@@ -28,6 +28,11 @@
   border: none;
   background-color: transparent;
   font-size: 30px;
+  transition: 0.3s;
+}
+
+.minesweeper-header .reset:hover {
+  transform: scale(1.1);
 }
 
 /* Footer */
@@ -43,6 +48,11 @@
   padding: 10px;
   cursor: pointer;
   border-radius: 3px;
+  transition: 0.3s;
+}
+
+.minesweeper-footer > div:first-child button:hover {
+  background-color: rgb(68, 68, 68);
 }
 
 .minesweeper-footer .custom-modal {
@@ -93,6 +103,7 @@
 
 .minesweeper-footer .custom-modal .content .input-form > label > input {
   width: 50px;
+  border-color: #ddd;
 }
 
 .minesweeper-footer .custom-modal .content > div:last-child button {
@@ -103,6 +114,11 @@
   padding: 6px 10px;
   cursor: pointer;
   border-radius: 3px;
+  transition: 0.3s;
+}
+
+.minesweeper-footer .custom-modal .content > div:last-child button:hover {
+  background-color: rgb(151, 151, 151);
 }
 
 /* Grid */
